@@ -1,13 +1,13 @@
 function Hole(id) {
 	//CONSTATNTS
 	//this is the low probability
-	const low = 1;
+	const lowProp = 1;
 	
 	//this is the med probability
-	const med = 15;
+	const medProp = 15;
 	
 	//this is the high probability
-	const high = 30;
+	const highProp = 30;
 	
 	//this is the range of numbers that can be generated
 	const maxProb = 100;
@@ -27,9 +27,33 @@ function Hole(id) {
 	//this is the preset for the diglett state
 	const diglett = new DiglettState();
 	
-	//FIELDS
+	//this is the hole image
+	const holeImg = "images/hole.png"
+	
+	//this is the peak image
+	const peakImg = "images/peak.png"
+	
+	//this is the diglett image
+	const diglettImg = "images/diglett.png"
+	
+	//this is the drilbur image
+	const drilburImg = "images/drilbur.png"
+	
 	//this is the currentState. initializes as hole state
-	this.switchState = hole.changeState;
+	var switchState = hole.changeState;
+	
+	//^^^^^^^^^this must go before this vvvvvvvvvvvv
+	
+	//this is the running var it is used to modify when a state changes
+	var running = setInterval(switchState, timeout);
+
+	//FUNCTIONS
+	function updateHole(img, state) {
+		switchState = state.changeState;
+		el.src = img;
+		clearInterval(running);
+		running = setInterval(switchState, timeout); //timeout from game.js
+	}
 
 	//METHODS
 	this.updateTime = function() {
@@ -69,26 +93,19 @@ function Hole(id) {
 		//on medium random chance it goes to peak state
 		this.changeState = function() {
 			var randomNum = Math.floor(Math.random() * maxProb);
-			console.log(randomNum);
-			randomNum = 5;
-			if (randomNum <= low) {
-				this.switchState = drilbur.changeState;
-				this.setSrc("images/drilbur.png");
-			} else if (randomNum <= med) {
-				this.setSrc("images/diglettPeak.png");
-				peak.toPeakState();
-			} else if (randomNum <= high) {
-				this.switchState = diglett.changeState;
-				this.setSrc("images/diglett.png");
+			if (randomNum <= lowProp) {
+				updateHole(drilburImg, drilbur);
+			} else if (randomNum <= medProp) {
+				updateHole(peakImg, peak);
+			} else if (randomNum <= highProp) {
+				updateHole(diglettImg, diglett);
+			} else {
+				updateHole(holeImg, hole);
 			}
 		}
 	}
 	
 	function PeakState() {
-		//this is used for when the state is changed into this
-		this.toPeakState = function() {
-			this.switchState = peak.changeState;
-		}
 		
 		//this is the name of the state;
 		var stateName = "peak";
@@ -102,7 +119,12 @@ function Hole(id) {
 		//on hit it does nothing
 		//if it does not hit the probability needed to go to diglett state it goes back to hole state
 		this.changeState = function() {
-			console.log(stateName);
+			var randomNum = Math.floor(Math.random() * maxProb);
+			if (randomNum <= highProp) {
+				updateHole(diglettImg, diglett)
+			} else {
+
+			}
 		}
 	}
 	
@@ -121,7 +143,6 @@ function Hole(id) {
 		//on a timeout it goes into the hole state
 		this.changeState = function() {
 			var drilburTimeout = timeout / 2;
-			console.log(stateName);
 		}
 		
 		
@@ -140,7 +161,6 @@ function Hole(id) {
 		//on a hit it goes into hole state and updates the user score
 		//on a timeout it goes into the hole state
 		this.changeState = function() {
-			console.log(stateName);
 		}
 	}
 	

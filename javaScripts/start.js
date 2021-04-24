@@ -18,7 +18,7 @@ function startMenu() {
 				holes[i].src = "images/hole.png";
 				//there is a diglet and the random should not run
 				run = false;
-			} else if (holes[i].src === "file:///C:/Users/eewzp/Documents/GitHub/wack_a_mon/images/diglettPeak.png") {
+			} else if (holes[i].src === "file:///C:/Users/eewzp/Documents/GitHub/wack_a_mon/images/peak.png") {
 				
 				random = Math.floor(Math.random() * 2);
 				
@@ -36,7 +36,7 @@ function startMenu() {
 		
 		if (run) {
 			var random = Math.floor(Math.random() * 3);
-			holes[random].src = "images/diglettPeak.png";
+			holes[random].src = "images/peak.png";
 		}
 	}
 	
