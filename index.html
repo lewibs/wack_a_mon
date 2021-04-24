@@ -4,19 +4,45 @@
 		<meta charse="utf-8">
 		<title>WACK-A-MON</title>
 		<link rel="icon" href="images/diglett.png">
-		<style>
-			body {
-			  background-image: url("images/grass.png");
-			}
-		</style>
+		
+		<!-- these are my style sheets -->
+		<link rel="stylesheet" href="styleSheets/header.css">
+		<link rel="stylesheet" href="styleSheets/start.css">
+		<link rel="stylesheet" href="styleSheets/main.css">
+		
+		<!-- these are the javascripts -->
+		<script src="javaScripts/game.js"/></script>
+		<script src="javaScripts/header.js"/></script>
+		<script src="javaScripts/start.js"/></script>
 	</head>
 	<body>
-		<header>
+		<!-- THIS IS THE HEADER -->
+		<header id="header">
 			<center>
-				<a href="https://fontmeme.com/pokemon-font/"><img src="https://fontmeme.com/permalink/210423/41e1582aef0a6d8a0e7d748b5618f64d.png" alt="pokemon-font" border="0"></a>
+				<img id="logo" src="images/logo.png"></img>
+				<br>
+				<div class="highScore">High Score: <span class="highScore" id="highScore">0</span></div>
+				<div><!--hidden until game start--></div>
 			</center>
 		</header>
-		<main>this is the whak zone</main>
+	
+		<!--THIS IS THE START MENU-->
+		<start id="start">
+			<center>
+				<p>use phone for best game play</p>
+			
+				<img class="startHole" src="images/hole.png"></img>
+				<img class="startHole" src="images/diglett.png"></img>
+				<img class="startHole" src="images/drilbur.png"></img>
+				
+				<p id="clickStart">CLICK ANYWHERE TO START</p>
+			</center>
+		</start>
+		
+		<!--THIS IS THE GAME-->
+		<main id="game" style="display: none">
+			hidden
+		</main>
 	</body>
 </html>
 

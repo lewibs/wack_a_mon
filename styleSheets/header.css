@@ -1,0 +1,13 @@
+#logo {
+min-height: 40%;
+max-height: 15em;
+}
+
+.highScore {
+	font-size: xxx-large;
+}
+
+#header{
+	padding-top: 5vh;
+	padding-bottom: 10vh;
+}
