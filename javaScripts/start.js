@@ -1,10 +1,12 @@
 //on load start flashing the start text
 window.onload = startMenu;
 
+//this method is the main start method it starts all the mobile content on the start
 function startMenu() {
 	blinkStart();
 	setInterval(cycleHoles, 800);
 	
+	//this randomly switches the hole to show new diglett position never will have more then 1
 	function cycleHoles() {
 		var holes = document.getElementsByClassName("startHole");
 		var run = true;
@@ -38,6 +40,7 @@ function startMenu() {
 		}
 	}
 	
+	//this causes the click anywhere to start text to blink
 	function blinkStart() {
 	   var f = document.getElementById('clickStart');
 	   setInterval(function() {

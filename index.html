@@ -8,12 +8,14 @@
 		<!-- these are my style sheets -->
 		<link rel="stylesheet" href="styleSheets/header.css">
 		<link rel="stylesheet" href="styleSheets/start.css">
+		<link rel="stylesheet" href="styleSheets/game.css">
 		<link rel="stylesheet" href="styleSheets/main.css">
 		
 		<!-- these are the javascripts -->
 		<script src="javaScripts/game.js"/></script>
 		<script src="javaScripts/header.js"/></script>
 		<script src="javaScripts/start.js"/></script>
+		<script src="javaScripts/hole.js"/></script>
 	</head>
 	<body>
 		<!-- THIS IS THE HEADER -->
@@ -21,8 +23,9 @@
 			<center>
 				<img id="logo" src="images/logo.png"></img>
 				<br>
-				<div class="highScore">High Score: <span class="highScore" id="highScore">0</span></div>
-				<div><!--hidden until game start--></div>
+				<span class="header">High Score: <span id="highScore">0</span></span>
+				<span class="header headerGame">time: <span id="time">0</span></span>
+				<span class="header headerGame">Score: <span id="currentScore">0</span></span>
 			</center>
 		</header>
 	
@@ -41,7 +44,31 @@
 		
 		<!--THIS IS THE GAME-->
 		<main id="game" style="display: none">
-			hidden
+			<center>
+				<div>
+					<img id="0" class="hole" src="images/hole.png"></img>
+					<img id="1" class="hole" src="images/hole.png"></img>
+					<img id="2" class="hole" src="images/hole.png"></img>
+				</div>
+				<div>
+					<img id="3" class="hole" src="images/hole.png"></img>
+					<img id="4" class="hole" src="images/hole.png"></img>
+				</div>
+				<div>
+					<img id="5" class="hole" src="images/hole.png"></img>
+					<img id="6" class="hole" src="images/hole.png"></img>
+					<img id="7" class="hole" src="images/hole.png"></img>
+				</div>
+				<div>
+					<img id="8" class="hole" src="images/hole.png"></img>
+					<img id="9" class="hole" src="images/hole.png"></img>
+				</div>
+				<div>
+					<img id="10" class="hole" src="images/hole.png"></img>
+					<img id="11" class="hole" src="images/hole.png"></img>
+					<img id="12" class="hole" src="images/hole.png"></img>
+				</div>
+			</center>
 		</main>
 	</body>
 </html>

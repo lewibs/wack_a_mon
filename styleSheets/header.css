@@ -1,10 +1,12 @@
+/* this is used to modify the header */
 #logo {
 min-height: 40%;
 max-height: 15em;
 }
 
-.highScore {
+.header {
 	font-size: xxx-large;
+	padding: 5px;
 }
 
 #header{

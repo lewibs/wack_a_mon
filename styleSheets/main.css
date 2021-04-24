@@ -1,5 +1,7 @@
-body {
+ /* this is the overarching style sheet that affects everything */
+ body {
 	background-image: url("../images/grass.png");
 	color: red;
 	font-weight: bold;
+	overflow: hidden;
 }
