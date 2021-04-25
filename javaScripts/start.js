@@ -10,7 +10,7 @@ function startMenu() {
 	musicMenu.play();
 	
 	//listener for starting click
-	setTimeout(function() {alert("this game runs best on a phone. If you are on a computer inspect element then press ctrl+shift+M to toggle device toolbar and view as phone"); window.onclick = startGame}, 100);	
+	window.onclick = startGame;
 	
 	blinkStart();
 	setInterval(cycleHoles, 800);
