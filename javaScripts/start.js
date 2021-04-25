@@ -1,12 +1,21 @@
+//cahnge
 //on load start flashing the start text
 window.onload = startMenu;
+
+//start menu music
+var musicMenu = new Audio("http://wackamon.lewibs.com/sounds/LittlerootTown8Bit.mp3");
 
 
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
-	//start menu music
-	musicMenu = new Audio("sounds/LittlerootTown8Bit.mp3");
-	musicMenu.play();
+    
+    setTimeout(function() {alert("for best game play run this on your phone or on your pc inspect element and swich to phone view"); musicMenu.play();}, 100);
+    musicMenu.play();
+    
+    
+    var diglettImg = "http://wackamon.lewibs.com/images/diglett.png";
+    var holeImg = "http://wackamon.lewibs.com/images/hole.png";
+    var peakImg = "http://wackamon.lewibs.com/images/peak.png";
 	
 	//listener for starting click
 	window.onclick = startGame;
@@ -21,20 +30,19 @@ function startMenu() {
 		var random;
 		
 		for (var i = 0; i < holes.length; i++) {
-			console.log("run?");
-			if (holes[i].src === "images/diglett.png") {
-				holes[i].src = "images/hole.png";
+			if (holes[i].src === diglettImg) {
+				holes[i].src = holeImg;
 				//there is a diglet and the random should not run
 				run = false;
-			} else if (holes[i].src === "images/peak.png") {
+			} else if (holes[i].src === peakImg) {
 				
 				random = Math.floor(Math.random() * 2);
 				
 				if (random === 0) {
-					holes[i].src = "images/diglett.png";
+					holes[i].src = diglettImg;
 					run = false;
 				} else if (random === 1) {
-					holes[i].src = "images/hole.png";
+					holes[i].src = holeImg;
 				}
 				
 				//there is a peaking diglet and the random should not run
@@ -44,7 +52,7 @@ function startMenu() {
 		
 		if (run) {
 			var random = Math.floor(Math.random() * 3);
-			holes[random].src = "images/peak.png";
+			holes[random].src = peakImg;
 		}
 	}
 	
