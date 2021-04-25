@@ -4,16 +4,23 @@ function Hole(id) {
 	const lowProp = 1;
 	
 	//this is the med probability
-	const medProp = 15;
+	const medProp = 5;
 	
 	//this is the high probability
-	const highProp = 30;
+	const highProp = 20;
 	
 	//this is the range of numbers that can be generated
 	const maxProb = 100;
 	
+	//this is the value for a dribur hit
+	const drilburHit = -5;
+	
+	//this is the value for a diglet hit
+	const diglettHit = 1;
+	
 	//this is the element
 	var el = document.getElementById(id);
+	el.onclick = listener;
 	
 	//this is the preset for the hole state
 	const hole = new HoleState();
@@ -44,21 +51,57 @@ function Hole(id) {
 	
 	//^^^^^^^^^this must go before this vvvvvvvvvvvv
 	
-	//this is the running var it is used to modify when a state changes
-	var running = setInterval(switchState, timeout);
+	//this is the intervalHolder var it is used to modify when a state changes
+	//setTimeout(function() {var intervalHolder = setInterval(switchState, timeout)}, 2250);
+	var intervalHolder = setInterval(switchState, timeout + 2000);
+
+	//this is the listener for the program if something is clicked on it is updated to true until the action is compleated
+	var listenerGoBrr = false;
+	
+	//this is the timeout holder for when something returns back to hole
+	var timeoutHolder;
+
+	this.endHole = function() {
+		clearInterval(intervalHolder);
+	}
+
 
 	//FUNCTIONS
 	function updateHole(img, state) {
 		switchState = state.changeState;
 		el.src = img;
-		clearInterval(running);
-		running = setInterval(switchState, timeout); //timeout from game.js
+		clearInterval(intervalHolder);
+		clearTimeout(timeoutHolder);
+		
+		intervalHolder = setInterval(switchState, timeout); //timeout from game.js
+		if (img !== holeImg && img !== peakImg) {
+			timeourHolder = setTimeout(toHole, timeout);
+		}
+	}
+	
+	function toHole() {
+		switchState();
+		updateHole(holeImg, hole)
+		
+	}
+	
+	//this is the wack function it wacks the pokemon
+	function wack() {
+		switchState();
+		switchState = hole.changeState;
+		el.src = holeImg;
+		clearInterval(intervalHolder);
+		intervalHolder = setInterval(switchState, timeout); //timeout from game.js
+	}
+	
+	//this is the listener method it runs when a specific thing happens like something getting wacked and updates the listener to true runs the update state then resets the listener to false
+	function listener() {
+		listenerGoBrr = true;
+		wack();
+		listenerGoBrr = false;
 	}
 
 	//METHODS
-	this.updateTime = function() {
-		timeout /= 1.1;
-	}
 	
 	//this gets the id of the hole
 	this.id = function() {
@@ -78,14 +121,6 @@ function Hole(id) {
 	
 	//this is the hole state
 	function HoleState() {
-		//this is the name of the state;
-		var stateName = "hole";
-		
-		//this gets the state name
-		this.getName = function() {
-			return stateName;
-		}
-		
 		//this has a few options
 		//on hit it remains in hole state
 		//on high random chance it goes to diglet state
@@ -99,68 +134,46 @@ function Hole(id) {
 				updateHole(peakImg, peak);
 			} else if (randomNum <= highProp) {
 				updateHole(diglettImg, diglett);
-			} else {
-				updateHole(holeImg, hole);
 			}
 		}
 	}
 	
 	function PeakState() {
-		
-		//this is the name of the state;
-		var stateName = "peak";
-		
-		//this gets the state name
-		this.getName = function() {
-			return stateName;
-		}
-		
 		//this has a few options
 		//on hit it does nothing
 		//if it does not hit the probability needed to go to diglett state it goes back to hole state
 		this.changeState = function() {
 			var randomNum = Math.floor(Math.random() * maxProb);
-			if (randomNum <= highProp) {
+
+			if (randomNum <= maxProb * 0.40) {
 				updateHole(diglettImg, diglett)
 			} else {
-
+				updateHole(holeImg, hole)
 			}
 		}
 	}
 	
-	function DrilburState() {
-		//this is the name of the state;
-		var stateName = "drilbur";
-		
-		//this gets the state name
-		this.getName = function() {
-			return stateName;
-		}
-		
+	function DrilburState() {		
 		//this is the timeout specifically for drilbur
 		//this has a few options
 		//on a hit it goes into hole state and updates the user score
 		//on a timeout it goes into the hole state
 		this.changeState = function() {
-			var drilburTimeout = timeout / 2;
-		}
-		
-		
+			if (listenerGoBrr) {
+				updateScore(drilburHit);
+			}
+		}	
 	}
 	
 	function DiglettState() {
-		//this is the name of the state;
-		var stateName = "diglett";
-		
-		//this gets the state name
-		this.getName = function() {
-			return stateName;
-		}
-		
 		//this has a few options
 		//on a hit it goes into hole state and updates the user score
 		//on a timeout it goes into the hole state
 		this.changeState = function() {
+			if (listenerGoBrr) {
+				updateScore(diglettHit);
+				updateTimeout();
+			}
 		}
 	}
 	

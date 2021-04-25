@@ -1,6 +1,6 @@
-/* this style sheet is used to modify anything on the start screen */
+/* this is the styles for the start menu*/
 #start {
-	font-size: xxx-large;
+	font-size: 3em;
 }
 
 .startHole {

@@ -1,8 +1,17 @@
 //on load start flashing the start text
 window.onload = startMenu;
 
+//start menu music
+var musicMenu = new Audio("sounds/LittlerootTown8Bit.mp3");
+
+
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
+	musicMenu.play();
+	
+	//listener for starting click
+	setTimeout(function() {alert("this game runs best on a phone. If you are on a computer inspect element then press ctrl+shift+M to toggle device toolbar and view as phone"); window.onclick = startGame}, 100);	
+	
 	blinkStart();
 	setInterval(cycleHoles, 800);
 	
@@ -47,6 +56,4 @@ function startMenu() {
 		  f.style.display = (f.style.display == 'none' ? '' : 'none');
 	   }, 850);
 	}	
-	
-	
 }
