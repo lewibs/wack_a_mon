@@ -5,3 +5,7 @@
 	font-weight: bold;
 	overflow: hidden;
 }
+
+#body {
+	height:80%;
+}
