@@ -5,7 +5,7 @@ window.onload = startMenu;
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
 	//start menu music
-	musicMenu = new Audio("sounds/LittlerootTown8Bit.mp3"); //this should be a global?
+	musicMenu = new Audio("sounds/LittlerootTown8Bit.mp3");
 	musicMenu.play();
 	
 	//listener for starting click
@@ -21,12 +21,12 @@ function startMenu() {
 		var random;
 		
 		for (var i = 0; i < holes.length; i++) {
-			
-			if (holes[i].src === "file:///C:/Users/eewzp/Documents/GitHub/wack_a_mon/images/diglett.png") {
+			console.log("run?");
+			if (holes[i].src === "images/diglett.png") {
 				holes[i].src = "images/hole.png";
 				//there is a diglet and the random should not run
 				run = false;
-			} else if (holes[i].src === "file:///C:/Users/eewzp/Documents/GitHub/wack_a_mon/images/peak.png") {
+			} else if (holes[i].src === "images/peak.png") {
 				
 				random = Math.floor(Math.random() * 2);
 				
