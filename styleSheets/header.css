@@ -1,0 +1,29 @@
+/* this is used to modify the header */
+#logo {
+	min-height: 40%;
+	max-height: 15em;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header {
+	font-size: 3em;
+}
+
+#header{
+	padding-bottom: 10vh;
+	height: 20%;
+}
+
+#highScoreBox {
+	float: right;
+}
+
+#scoreBox {
+	float: left;
+}
+
+#timeBox {
+	display: none;
+}
