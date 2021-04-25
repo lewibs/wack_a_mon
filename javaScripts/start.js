@@ -1,12 +1,11 @@
 //on load start flashing the start text
 window.onload = startMenu;
 
-//start menu music
-var musicMenu = new Audio("sounds/LittlerootTown8Bit.mp3");
-
 
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
+	//start menu music
+	musicMenu = new Audio("sounds/LittlerootTown8Bit.mp3"); //this should be a global?
 	musicMenu.play();
 	
 	//listener for starting click
