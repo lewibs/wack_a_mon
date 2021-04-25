@@ -4,7 +4,5 @@
 	color: red;
 	font-weight: bold;
 	overflow: hidden;
-}
-
-#body {
+	test-align: center;
 }
