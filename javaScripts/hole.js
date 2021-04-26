@@ -13,13 +13,14 @@ function Hole(id) {
 	const maxProb = 100;
 	
 	//this is the value for a dribur hit
-	const drilburHit = -5;
+	const drilburHit = 3;
 	
 	//this is the value for a diglet hit
 	const diglettHit = 1;
 	
 	//this is the element
 	var el = document.getElementById(id);
+	el.ontouchstart = listener;
 	el.onclick = listener;
 	
 	//this is the preset for the hole state

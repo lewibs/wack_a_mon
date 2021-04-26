@@ -18,6 +18,7 @@ function hideStats() {
 }
 
 function showHighscores() {
+	document.getElementById("end").style.display = "initial";
 	document.getElementsByClassName("highScoreChart")[0].style.display = "initial";
 	document.getElementById("yourScore").innerHTML = currentScoreGame;
 }
