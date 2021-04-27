@@ -2,6 +2,13 @@
 //on load start flashing the start text
 window.onload = startMenu;
 
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // true for mobile device
+}else{
+  // false for not mobile device
+  console.log("change style to work on computer");
+}
+
 //start menu music
 var musicMenu = new Audio("http://wackamon.lewibs.com/sounds/LittlerootTown8Bit.mp3");
 

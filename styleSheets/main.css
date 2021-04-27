@@ -3,10 +3,4 @@
 	background-image: url("../images/grass.png");
 	color: red;
 	font-weight: bold;
-	overflow: hidden;
-	/*max-width: 1300px;
-	max-height: 100%;
-	position: fixed;
-	left: 50%;
-	transform: translate(-50%, 0%);*/
 }
