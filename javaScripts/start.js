@@ -60,7 +60,7 @@ function startMenu() {
 	function blinkStart() {
 	   var f = document.getElementById('clickStart');
 	   setInterval(function() {
-		  f.style.display = (f.style.display == 'none' ? '' : 'none');
+		  f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
 	   }, 850);
 	}	
 }
