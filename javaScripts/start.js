@@ -8,8 +8,7 @@ var musicMenu = new Audio("http://wackamon.lewibs.com/sounds/LittlerootTown8Bit.
 
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
-    
-    setTimeout(function() {alert("for best game play run this on your phone or on your pc inspect element and swich to phone view"); musicMenu.play();}, 100);
+	
     musicMenu.play();
     
     
