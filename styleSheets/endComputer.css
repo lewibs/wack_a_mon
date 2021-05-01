@@ -13,13 +13,7 @@
 }
 
 .topTenItem {
-
-}
-
-.yourFinalChart {
-	display: grid;
-	grid-template-columns: auto auto;
-	padding: 10px;
+	text-align: center;
 }
 
 #end {
@@ -36,4 +30,15 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 12cm
+}
+
+#end center {
+	padding: 10px;
+}
+
+#initialTextBox {
+	background: #ffcb05;
+	margin: 0px 0;
+	border: 0px solid #ffcb05;
+	border-radius: 4px;
 }

@@ -1,4 +1,5 @@
 function end() {
+	setTimeout(function() {musicGame.pause()}, 1000);
 	hideStats();
 	endHoles();
 	setTimeout(showHighscores, 1000);
