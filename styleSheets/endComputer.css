@@ -1,0 +1,39 @@
+/* this is used for the end score chart */
+.highScoreChart {
+	text-align:left;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.topTen {
+	display: grid;
+	grid-template-columns: auto auto;
+	padding: 10px;
+}
+
+.topTenItem {
+
+}
+
+.yourFinalChart {
+	display: grid;
+	grid-template-columns: auto auto;
+	padding: 10px;
+}
+
+#end {
+	display: none;
+	background-color: #ffcb05;
+	border-width:5px;
+	border-style:solid;
+	border-color:#2a75bb;
+	border-radius: 25px;
+	color: black;
+	width: 50%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 12cm
+}

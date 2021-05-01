@@ -1,0 +1,29 @@
+/* this is used to modify the header when in computer mode */
+
+#logo {
+	max-width:10cm;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#highScoreBox {
+	text-align: right;
+}
+
+#header {
+	width: 10cm;
+
+	margin: auto;
+	width: 50%;
+  	padding: 5px;
+}
+
+#headerScores {
+	margin: auto;
+	width: 50%;
+	width: 10cm;
+	display: grid;
+	grid-template-columns: auto auto;
+	visibility: hidden;
+}

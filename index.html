@@ -3,135 +3,133 @@
 	<head>
 		<meta charse="utf-8">
 		<title>WACKAMON</title>
-		<link rel="icon" href="images/diglett.png">
-		
-		<!-- these are my style sheets -->
-		<link rel="stylesheet" href="styleSheets/end.css">
-		<link rel="stylesheet" href="styleSheets/header.css">
-		<link rel="stylesheet" href="styleSheets/start.css">
-		<link rel="stylesheet" href="styleSheets/game.css">
-		<link rel="stylesheet" href="styleSheets/main.css">
 		
 		<!-- these are the javascripts -->
 		<script src="javaScripts/game.js"></script>
 		<script src="javaScripts/start.js"></script>
 		<script src="javaScripts/hole.js"></script>
 		<script src="javaScripts/end.js"></script>
+		<script src="javaScripts/fetchStyle.js"></script>
+		
+		
+		<!-- these are my style sheets -->
+		<script>
+		//used in both
+		fetchStyle("styleSheets/main.css");
+		
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+			fetchStyle("styleSheets/endPhone.css");
+			fetchStyle("styleSheets/headerPhone.css");
+			fetchStyle("styleSheets/startPhone.css");
+			fetchStyle("styleSheets/gamePhone.css");
+		}else{
+			fetchStyle("styleSheets/endComputer.css");
+			fetchStyle("styleSheets/headerComputer.css");
+			fetchStyle("styleSheets/startComputer.css");
+			fetchStyle("styleSheets/gameComputer.css");
+		}
+		</script>
 	</head>
 	<body>
-		<!-- THIS IS THE HEADER -->
-		<header id="header">
-			<span id="scoreBox" class="header gameStats">SCORE: <span id="currentScore">0</span></span>
-			<span id="highScoreBox" class="header gameStats">HIGH SCORE: <span id="highScore1">47</span></span>
-			
-			<img id="logo" src="images/logo.png">
-			
-			<center id="footerStats">
-				<span id="homeHighScoreBox" class="header">HIGH SCORE: <span id="highScore2">47</span></span>
-			</center>
-		</header>
-	
-		<!--THIS IS THE START MENU-->
-		<start id="start">
-			<center>
-				<p style="visibility: hidden;">this game works best on a phone</p>
-			
-				<img class="startHole" src="images/hole.png"></img>
-				<img class="startHole" src="images/diglett.png"></img>
-				<br>
-				<img class="startHole" src="images/hole.png"></img>
+			<!-- THIS IS THE HEADER -->
+			<header id="header">
+				<div id = "headerScores">
+					<span id="scoreBox" class="header gameStats">SCORE: <span id="currentScore">0</span></span>
+					<span id="highScoreBox" class="header gameStats">HIGH SCORE: <span class="highScore">47</span></span>
+				</div>
 				
-				<p id="clickStart">CLICK ANYWHERE TO START</p>
-			</center>
-		</start>
+				<img id="logo" src="images/logo.png">
+				
+				<center id="footerStats">
+					<span id="homeHighScoreBox" class="header">HIGH SCORE: <span class="highScore">47</span></span>
+				</center>
+			</header>
 		
-		<!--THIS IS THE GAME-->
-		<main id="game" style="display: none">
-			<center>
-				<div>
-					<img id="0" class="hole" src="images/hole.png">
-					<img id="1" class="hole" src="images/hole.png">
-					<img id="2" class="hole" src="images/hole.png">
+			<!--THIS IS THE START MENU-->
+			<start id="start">
+				<center>
+					<p style="visibility: hidden;">this game works best on a phone</p>
+				
+					<img class="startHole" src="images/hole.png"></img>
+					<img class="startHole" src="images/diglett.png"></img>
+					<br>
+					<img class="startHole" src="images/hole.png"></img>
+					
+					<p id="clickStart">CLICK ANYWHERE TO START</p>
+				</center>
+			</start>
+			
+			<!--THIS IS THE GAME-->
+			<main id="game" style="display: none">
+				<center>
+					<div>
+						<img id="0" class="hole" src="images/hole.png">
+						<img id="1" class="hole" src="images/hole.png">
+						<img id="2" class="hole" src="images/hole.png">
+					</div>
+					<div> 	
+						<img id="3" class="hole" src="images/hole.png">
+						<img id="4" class="hole" src="images/hole.png">
+					</div>
+					<div>
+						<img id="5" class="hole" src="images/hole.png">
+						<img id="6" class="hole" src="images/hole.png">
+						<img id="7" class="hole" src="images/hole.png">
+					</div>
+					<div>
+						<img id="8" class="hole" src="images/hole.png">
+						<img id="9" class="hole" src="images/hole.png">
+					</div>
+					<div>
+						<img id="10" class="hole" src="images/hole.png">
+						<img id="11" class="hole" src="images/hole.png">
+						<img id="12" class="hole" src="images/hole.png">
+					</div>
+				</center>
+			</main>
+			
+			
+			<div class="countDown">
+				<img class="countDown" src="images/theNumber3.png">
+				<img class="countDown" src="images/theNumber2.png">
+				<img class="countDown" src="images/theNumber1.png">
+				<img class="countDown" src="images/go.png">
+			</div>
+			
+			<div id="end">
+				<center>HIGH SCORES</center>
+				<div class="highScoreChart">
+					<div class="topTen">
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+						<div class="topTenItem">BSL</div>
+						<div class="topTenItem">52</div>
+					</div>
+					<div class="yourFinalChart">
+						<div>YOUR SCORE:</div>
+						<div id="yourScore"></div>
+						<input type="text" id="initials">
+						<button id="finalButton">enter</button>
+					</div>
 				</div>
-				<div>
-					<img id="3" class="hole" src="images/hole.png">
-					<img id="4" class="hole" src="images/hole.png">
-				</div>
-				<div>
-					<img id="5" class="hole" src="images/hole.png">
-					<img id="6" class="hole" src="images/hole.png">
-					<img id="7" class="hole" src="images/hole.png">
-				</div>
-				<div>
-					<img id="8" class="hole" src="images/hole.png">
-					<img id="9" class="hole" src="images/hole.png">
-				</div>
-				<div>
-					<img id="10" class="hole" src="images/hole.png">
-					<img id="11" class="hole" src="images/hole.png">
-					<img id="12" class="hole" src="images/hole.png">
-				</div>
-			</center>
-		</main>
-		
-		
-		<div class="countDown">
-			<img class="countDown" src="images/theNumber3.png">
-			<img class="countDown" src="images/theNumber2.png">
-			<img class="countDown" src="images/theNumber1.png">
-			<img class="countDown" src="images/go.png">
+			</div>
 		</div>
-		
-		<div id="end">
-			<center>HIGH SCORES</center>
-			<table class="highScoreChart">
-			  <tr>
-				<td>ABC</td>
-				<td>47</td>
-			  </tr>
-			  <tr>
-				<td>DEF</td>
-				<td>44</td>
-			  </tr>
-			  <tr>
-				<td>GHI</td>
-				<td>40</td>
-			  </tr>
-			  <tr>
-				<td>JKL</td>
-				<td>38</td>
-			  </tr>
-			  <tr>
-				<td>MNO</td>
-				<td>35</td>
-			  </tr>
-			  <tr>
-				<td>PQR</td>
-				<td>33</td>
-			  </tr>
-			  <tr>
-				<td>STU</td>
-				<td>30</td>
-			  </tr>
-			  <tr>
-				<td>VWX</td>
-				<td>27</td>
-			  </tr>
-			  <tr>
-				<td>YXA</td>
-				<td>25</td>
-			  </tr>
-			  <tr>
-				<td>BCD</td>
-				<td>23</td>
-			  </tr>
-			  <tr>
-				<td>YOUR SCORE:</td>
-				<td id="yourScore"></td>
-			  </tr>
-			</table>
-		</div>
-
 	</body>
 </html>
 

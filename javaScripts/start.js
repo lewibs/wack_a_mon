@@ -2,19 +2,18 @@
 //on load start flashing the start text
 window.onload = startMenu;
 
-if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-  // true for mobile device
-}else{
-  // false for not mobile device
-  console.log("change style to work on computer");
-}
-
 //start menu music
 var musicMenu = new Audio("http://wackamon.lewibs.com/sounds/LittlerootTown8Bit.mp3");
 
 
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
+	
+	document.getElementById("end").style.display = "none";
+	document.getElementById("game").style.display = "none";
+	document.getElementById("start").style.display = "initial";
+	document.getElementById("homeHighScoreBox").style.display = "initial";
+	musicGame.pause();
 	
     musicMenu.play();
     

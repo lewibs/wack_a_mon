@@ -2,6 +2,7 @@ function end() {
 	hideStats();
 	endHoles();
 	setTimeout(showHighscores, 1000);
+	document.getElementById("finalButton").onclick = finalButton;
 }
 
 function hideHoles(className) {
@@ -27,4 +28,8 @@ function endHoles() {
 	for (var i = 0; i < holes.length; i++) {
 		holes[i].endHole();
 	}
+}
+
+function finalButton() {
+	location.reload();
 }

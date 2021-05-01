@@ -1,0 +1,24 @@
+/* this is the style for the game aspect in a computer*/
+
+.hole {
+	max-height: 100px;
+	max-width: 125px;
+	min-width: 1cm;
+}
+
+.gameStats {
+	visibility: hidden;
+}
+
+.countDown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.countDown > img {
+	display: none;
+	width: 400px;
+}
