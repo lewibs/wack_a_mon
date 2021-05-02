@@ -36,9 +36,38 @@
 	padding: 10px;
 }
 
-#initialTextBox {
+#end label {
+	padding: 10px;
+}
+
+#userInput {
 	background: #ffcb05;
 	margin: 0px 0;
 	border: 0px solid #ffcb05;
 	border-radius: 4px;
+	width: 0.8cm;
+ 	margin: 0 auto;
+	text-align: left;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: black;
+	opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: black;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+	color: black;
+}
+
+#warning {
+	visibility: hidden;
+	color: red;
+}
+
+#newHighScore {
+	display: none;
 }

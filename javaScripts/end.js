@@ -3,6 +3,8 @@ function end() {
 	hideStats();
 	endHoles();
 	setTimeout(showHighscores, 1000);
+	
+	blinkInput();
 	document.getElementById("finalButton").onclick = finalButton;
 }
 
@@ -22,7 +24,8 @@ function hideStats() {
 function showHighscores() {
 	document.getElementById("end").style.display = "initial";
 	document.getElementsByClassName("highScoreChart")[0].style.display = "initial";
-	document.getElementById("yourScore").innerHTML = currentScoreGame;
+	document.getElementsByClassName("userScore")[0].innerHTML = currentScoreGame;
+	document.getElementsByClassName("userScore")[1].innerHTML = currentScoreGame;
 }
 
 function endHoles() {
@@ -32,5 +35,48 @@ function endHoles() {
 }
 
 function finalButton() {
-	location.reload();
+	var input = document.getElementById('userInput').value;
+	var warning = document.getElementById('warning');
+	
+	if (input === "") {
+		warning.style.visibility = "visible";
+		warning.innerHTML = "ENTER INITIALS";
+	} else if ( !validInit(input) ) {
+		warning.style.visibility = "visible";
+		warning.innerHTML = "INITIALS MUST BE THREE CHARACTERS";
+	} else {
+		location.reload();
+	}
+	
+	function validInit(str) {
+		var letter;
+		if (str.length === 3) {
+			
+			for (var i = 0; i < 3; i++) {
+				letter = str.charCodeAt(i);
+				
+				if (!((letter > 64 && letter < 91)||(letter > 96 && letter < 123)||(letter > 127 && letter < 155)||(letter > 159 && letter < 166))) {
+					return false;
+				}
+				
+			}
+			
+			return true;
+			
+		} else {
+			return false;
+		}
+	}
 }
+
+//this causes the click anywhere to start text to blink
+	function blinkInput() {
+	   var f = document.getElementById('userInput');
+	   setInterval(function() {
+		  if (f.placeholder == "") {
+			  f.placeholder = "|";
+		  } else {
+			  f.placeholder = "";
+		  }
+	   }, 850);
+	}	
