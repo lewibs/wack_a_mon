@@ -1,4 +1,5 @@
 use axios to send data to server
 jQuery
 ajax
-heroku server thing
+
+make it so that if they miss something it slows down

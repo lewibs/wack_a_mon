@@ -3,6 +3,7 @@ function end() {
 	hideStats();
 	endHoles();
 	setTimeout(showHighscores, 1000);
+	//$(".userScore").load("test.txt", currentScoreGame, function() {alert("yo")});
 	
 	blinkInput();
 	document.getElementById("finalButton").onclick = finalButton;
