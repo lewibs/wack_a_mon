@@ -1,0 +1,12 @@
+[
+	-{
+	    id: 1,
+		name: "BSL", 
+		score: "5"
+	}, 
+	-{
+	    id: 2,
+		name: "JSL",
+		score: "18"
+	}
+]

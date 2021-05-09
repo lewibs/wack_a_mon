@@ -4,13 +4,15 @@
 		<meta charse="utf-8">
 		<title>WACKAMON</title>
 		
+		<!-- imports -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
 		<!-- these are the javascripts -->
 		<script src="javaScripts/game.js"></script>
 		<script src="javaScripts/start.js"></script>
 		<script src="javaScripts/hole.js"></script>
-		<script src="javaScripts/end.js"></script>
 		<script src="javaScripts/fetchStyle.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="javaScripts/end.js"></script>
 				
 		<!-- these are my style sheets -->
 		<script>
@@ -99,28 +101,12 @@
 			<div id="end">
 				<center>HIGH SCORES</center>
 				<div class="highScoreChart">
-					<div class="topTen">
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<input type="text" id="userInput" class="topTenItem" placeholder="|">
-						<div class="topTenItem userScore">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
-						<div class="topTenItem">BSL</div>
-						<div class="topTenItem">52</div>
+					<div class="topTen" id="topTen">
 					</div>
+					
+					<!-- this is the tags for the top ten item if the get a highscore -->
+					<input style="display:none" type="text" id="userInput" class="topTenItem" placeholder="|">
+					<div style="display:none" class="topTenItem userScore">52</div>
 					
 					<center>YOUR SCORE: <span class="userScore"></span><center>
 					

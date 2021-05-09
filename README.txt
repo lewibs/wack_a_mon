@@ -3,3 +3,5 @@ jQuery
 ajax
 
 make it so that if they miss something it slows down
+
+turn off zoom on phone

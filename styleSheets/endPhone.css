@@ -32,6 +32,14 @@
 	transform: translate(-50%, -50%);
 }
 
+#end center {
+	padding: 30px;
+}
+
+#end label {
+	padding: 30px;
+}
+
 #userInput {
 	background: #ffcb05;
 	margin: 0px 0;

@@ -3,7 +3,6 @@ function end() {
 	hideStats();
 	endHoles();
 	setTimeout(showHighscores, 1000);
-	//$(".userScore").load("test.txt", currentScoreGame, function() {alert("yo")});
 	
 	blinkInput();
 	document.getElementById("finalButton").onclick = finalButton;
@@ -17,24 +16,30 @@ function hideHoles(className) {
 	}
 }
 
+//this changes the games hide stats visibility to not be visible
 function hideStats() {
 	document.getElementsByClassName("gameStats")[0].style.visibility = "hidden";
 	document.getElementsByClassName("gameStats")[1].style.visibility = "hidden";
 }
 
+
+//this shows the highscores
 function showHighscores() {
 	document.getElementById("end").style.display = "initial";
 	document.getElementsByClassName("highScoreChart")[0].style.display = "initial";
 	document.getElementsByClassName("userScore")[0].innerHTML = currentScoreGame;
 	document.getElementsByClassName("userScore")[1].innerHTML = currentScoreGame;
+	populateScores();
 }
 
+//this makes the holes stop running
 function endHoles() {
 	for (var i = 0; i < holes.length; i++) {
 		holes[i].endHole();
 	}
 }
 
+//this is the functionality for the button that resets the game
 function finalButton() {
 	var input = document.getElementById('userInput').value;
 	var warning = document.getElementById('warning');
@@ -49,6 +54,7 @@ function finalButton() {
 		location.reload();
 	}
 	
+	//this checks if the string is valid for username
 	function validInit(str) {
 		var letter;
 		if (str.length === 3) {
@@ -70,14 +76,45 @@ function finalButton() {
 	}
 }
 
-//this causes the click anywhere to start text to blink
-	function blinkInput() {
-	   var f = document.getElementById('userInput');
-	   setInterval(function() {
-		  if (f.placeholder == "") {
-			  f.placeholder = "|";
-		  } else {
-			  f.placeholder = "";
-		  }
-	   }, 850);
-	}	
+//this causes the placeholder in the text input to blink
+function blinkInput() {
+	var f = document.getElementById('userInput');
+	setInterval(function() {
+		if (f.placeholder == "") {
+			f.placeholder = "|";
+		} else {
+			f.placeholder = "";
+		}
+    }, 850);
+}	
+
+//this populates the hoghscore chart
+function populateScores() {
+	
+	$(function(){
+		
+		var $highScores = $("#topTen");
+		
+		$.ajax({
+			type: "GET",
+			dataType : 'json',
+			url: "data/highScores",
+			success: function(highScores) {
+				$.each(highScores, function(i, score) {
+					$highScores.append("<div class='topTenItem'>" + score.name + "</div>" + "<div class='topTenItem'>" + score.score + "</div>");
+				});
+			},
+			error: function() {
+				alert("failed in populate scores end.js");
+			}
+		});
+	});
+	
+}
+
+//this is used to replace class names
+(function ($) {
+    $.fn.replaceClass = function (pFromClass, pToClass) {
+        return this.removeClass(pFromClass).addClass(pToClass);
+    };
+}(jQuery));

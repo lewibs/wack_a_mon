@@ -1,0 +1,2 @@
+<input type="text" id="userInput" class="topTenItem" placeholder="|">
+<div class="topTenItem userScore">SCORE</div>

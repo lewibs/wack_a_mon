@@ -1,0 +1,2 @@
+<div class="topTenItem topTenName">NAME</div>
+<div class="topTenItem topTenScore">SCORE</div>
