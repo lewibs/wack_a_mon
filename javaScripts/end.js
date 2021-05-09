@@ -97,8 +97,7 @@ function populateScores() {
 		
 		$.ajax({
 			type: "GET",
-			dataType : 'json',
-			url: "data/highScores",
+			url: "data/highScores.json",
 			success: function(highScores) {
 				$.each(highScores, function(i, score) {
 					$highScores.append("<div class='topTenItem'>" + score.name + "</div>" + "<div class='topTenItem'>" + score.score + "</div>");
