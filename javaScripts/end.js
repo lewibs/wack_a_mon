@@ -98,17 +98,19 @@ function populateScores() {
 		$.ajax({
 			type: "GET",
 			url: "data/highScores.json",
+			dataType: "json",
 			success: function(highScores) {
 				$.each(highScores, function(i, score) {
 					$highScores.append("<div class='topTenItem'>" + score.name + "</div>" + "<div class='topTenItem'>" + score.score + "</div>");
 				});
-			},
-			error: function() {
-				alert("failed in populate scores end.js");
 			}
+	
+		}).fail(function ( jqXHR, textStatus, errorThrown ) {
+			console.log(jqXHR);
+			console.log(textStatus);
+			console.log(errorThrown);
 		});
 	});
-	
 }
 
 //this is used to replace class names
