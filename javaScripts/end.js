@@ -1,3 +1,6 @@
+//GlobalVariable
+var topTenScores; //if you wanna hack the game and give yourself a highscore this would be the place to do it;
+
 function end() {
 	setTimeout(function() {musicGame.pause()}, 1000);
 	hideStats();
@@ -88,21 +91,48 @@ function blinkInput() {
     }, 850);
 }	
 
-//this populates the hoghscore chart
+//this populates the hoghscore char
 function populateScores() {
 	
 	$(function(){
 		
-		var $highScores = $("#topTen");
+		var $topTen = $("#topTen");
 		
 		$.ajax({
 			type: "GET",
 			url: "data/highScores.json",
 			dataType: "json",
 			success: function(highScores) {
-				$.each(highScores, function(i, score) {
-					$highScores.append("<div class='topTenItem'>" + score.name + "</div>" + "<div class='topTenItem'>" + score.score + "</div>");
-				});
+				topTenScores = highScores;
+				
+				if (topTenScores.length === 0) { //if there are no scores it loads this one and lets the current user be the first score
+					    console.log("yup");
+						$topTen.append("<input type='text' id='userInput' class='topTenItem' placeholder='|'><div class='topTenItem userScore'>" + currentScoreGame + "</div>");
+				} else if (topTenScores.length === 1) {
+					if (currentScoreGame > topTenScores) {
+						$topTen.append("<div class='topTenItem'>" + topTenScores[0].name + "</div>" + "<div class='topTenItem'>" + topTenScores[0].score + "</div>");
+						$topTen.append("<input type='text' id='userInput' class='topTenItem' placeholder='|'><div class='topTenItem userScore'>" + currentScoreGame + "</div>");
+					} else {
+						$topTen.append("<input type='text' id='userInput' class='topTenItem' placeholder='|'><div class='topTenItem userScore'>" + currentScoreGame + "</div>");
+						$topTen.append("<div class='topTenItem'>" + topTenScores[0].name + "</div>" + "<div class='topTenItem'>" + topTenScores[0].score + "</div>");
+					}	
+				} else {	
+					for (var i = 0; i < topTenScores.length; i++) {
+						if (currentScoreGame > topTenScores[i].score) { 
+							//move the list down and go in the slot of i
+							//check the name and score
+							var front = topTenScores.splice(i);
+						}
+					}
+					
+					//add currentScoreGame to the correct spot in topTenScores with the name "addPlayerName"
+					//go through all the elements and if it says add player name in name then give the user input html instead of the highscore html
+					//stop at 10 and remove the 11th (once you get the player name add it to the correct spot in the list and then you can post that)
+					
+					//$.each(highScores, function(i, score) {
+    	            //   $topTen.append("<div class='topTenItem'>" + score.name + "</div>" + "<div class='topTenItem'>" + score.score + "</div>");
+    				//});
+				}
 			}
 	
 		}).fail(function ( jqXHR, textStatus, errorThrown ) {
