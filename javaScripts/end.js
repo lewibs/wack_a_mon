@@ -55,7 +55,7 @@ function finalButton() {
 			
 			for (var i = 0; i < topTenScores.length; i++) {
 				if (topTenScores[i].name === "addPlayerName") {
-					topTenScores[i].name = document.getElementById("userInput").value;
+					topTenScores[i].name = (document.getElementById("userInput").value).toUpperCase();
 				}
 			}
 			
@@ -65,7 +65,7 @@ function finalButton() {
 				dataType: "json",
 				data: topTenScores,
 				type: "POST"
-			})
+			});
 			
 			location.reload();
 		}
@@ -123,6 +123,8 @@ function populateScores() {
 					//add currentScoreGame to the correct spot in topTenScores with the name "addPlayerName"
 					//stop at 10 and remove the 11th (once you get the player name add it to the correct spot in the list and then you can post that)
 					//go through all the elements and if it says add player name in name then give the user input html instead of the highscore html
+					var addedEl = false;
+					
 					for (var i = 0; i < topTenScores.length; i++) {
 						if (currentScoreGame > topTenScores[i].score) { 
 							//move the list down and go in the slot of i
@@ -130,8 +132,13 @@ function populateScores() {
 							var back = topTenScores.splice(i);
 							back = [{"name": "addPlayerName", "score": currentScoreGame}].concat(back);
 							topTenScores = topTenScores.concat(back);
+							addedEl = true;
 							break;
 						}
+					}
+					
+					if (addedEl === false) {
+						topTenScores = topTenScores.concat({"name": "addPlayerName", "score": currentScoreGame});
 					}
 					
 					if (topTenScores.length > 10) { //if the list has 11 items delete the lowest one
