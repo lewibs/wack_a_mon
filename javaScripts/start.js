@@ -5,7 +5,6 @@ window.onload = startMenu;
 //start menu music
 var musicMenu = new Audio("http://wackamon.lewibs.com/sounds/LittlerootTown8Bit.mp3");
 
-
 //this method is the main start method it starts all the mobile content on the start
 function startMenu() {
 	
@@ -27,6 +26,8 @@ function startMenu() {
 	
 	blinkStart();
 	setInterval(cycleHoles, 800);
+	
+	setHighScore();
 	
 	//this randomly switches the hole to show new diglett position never will have more then 1
 	function cycleHoles() {
@@ -67,5 +68,25 @@ function startMenu() {
 	   setInterval(function() {
 		  f.style.visibility = (f.style.visibility == 'hidden' ? '' : 'hidden');
 	   }, 850);
-	}	
+	}
+	
+	function setHighScore() {
+		//gets highscores set up
+		$(function(){
+			
+			$.ajax({
+				type: "GET",
+				url: "data/highScores.json",
+				dataType: "json",
+				success: function(highScores) {
+					$(".highScore").html(highScores[0].score);
+				}
+
+			}).fail(function ( jqXHR, textStatus, errorThrown ) {
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			});
+		});		
+	}
 }

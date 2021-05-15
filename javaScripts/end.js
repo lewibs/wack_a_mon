@@ -6,8 +6,6 @@ function end() {
 	hideStats();
 	endHoles();
 	setTimeout(showHighscores, 1000);
-	
-	blinkInput();
 	document.getElementById("finalButton").onclick = finalButton;
 }
 
@@ -31,7 +29,6 @@ function showHighscores() {
 	document.getElementById("end").style.display = "initial";
 	document.getElementsByClassName("highScoreChart")[0].style.display = "initial";
 	document.getElementsByClassName("userScore")[0].innerHTML = currentScoreGame;
-	document.getElementsByClassName("userScore")[1].innerHTML = currentScoreGame;
 	populateScores();
 }
 
@@ -44,15 +41,36 @@ function endHoles() {
 
 //this is the functionality for the button that resets the game
 function finalButton() {
-	var input = document.getElementById('userInput').value;
-	var warning = document.getElementById('warning');
-	
-	if (input === "") {
-		warning.style.visibility = "visible";
-		warning.innerHTML = "ENTER INITIALS";
-	} else if ( !validInit(input) ) {
-		warning.style.visibility = "visible";
-		warning.innerHTML = "INITIALS MUST BE THREE CHARACTERS";
+	if (document.getElementById('userInput') != null) {
+		var input = document.getElementById('userInput').value;
+		var warning = document.getElementById('warning');
+		
+		if (input === "") {
+			warning.style.visibility = "visible";
+			warning.innerHTML = "ENTER INITIALS";
+		} else if ( !validInit(input) ) {
+			warning.style.visibility = "visible";
+			warning.innerHTML = "INITIALS MUST BE THREE CHARACTERS";
+		} else {
+			
+			for (var i = 0; i < topTenScores.length; i++) {
+				if (topTenScores[i].name === "addPlayerName") {
+					topTenScores[i].name = document.getElementById("userInput").value;
+				}
+			}
+			
+			
+			$.ajax({
+				url: "data/highScores.json",
+				dataType: "json",
+				data: topTenScores,
+				type: "POST"
+			}).done(function (data) {
+				alert("scores saved");
+			});
+			
+			location.reload();
+		}
 	} else {
 		location.reload();
 	}
@@ -79,18 +97,6 @@ function finalButton() {
 	}
 }
 
-//this causes the placeholder in the text input to blink
-function blinkInput() {
-	var f = document.getElementById('userInput');
-	setInterval(function() {
-		if (f.placeholder == "") {
-			f.placeholder = "|";
-		} else {
-			f.placeholder = "";
-		}
-    }, 850);
-}	
-
 //this populates the hoghscore char
 function populateScores() {
 	
@@ -106,7 +112,6 @@ function populateScores() {
 				topTenScores = highScores;
 				
 				if (topTenScores.length === 0) { //if there are no scores it loads this one and lets the current user be the first score
-					    console.log("yup");
 						$topTen.append("<input type='text' id='userInput' class='topTenItem' placeholder='|'><div class='topTenItem userScore'>" + currentScoreGame + "</div>");
 				} else if (topTenScores.length === 1) {
 					if (currentScoreGame > topTenScores) {
@@ -117,21 +122,42 @@ function populateScores() {
 						$topTen.append("<div class='topTenItem'>" + topTenScores[0].name + "</div>" + "<div class='topTenItem'>" + topTenScores[0].score + "</div>");
 					}	
 				} else {	
+					//add currentScoreGame to the correct spot in topTenScores with the name "addPlayerName"
+					//stop at 10 and remove the 11th (once you get the player name add it to the correct spot in the list and then you can post that)
+					//go through all the elements and if it says add player name in name then give the user input html instead of the highscore html
 					for (var i = 0; i < topTenScores.length; i++) {
 						if (currentScoreGame > topTenScores[i].score) { 
 							//move the list down and go in the slot of i
 							//check the name and score
-							var front = topTenScores.splice(i);
+							var back = topTenScores.splice(i);
+							back = [{"name": "addPlayerName", "score": currentScoreGame}].concat(back);
+							topTenScores = topTenScores.concat(back);
+							break;
 						}
 					}
 					
-					//add currentScoreGame to the correct spot in topTenScores with the name "addPlayerName"
-					//go through all the elements and if it says add player name in name then give the user input html instead of the highscore html
-					//stop at 10 and remove the 11th (once you get the player name add it to the correct spot in the list and then you can post that)
+					if (topTenScores.length > 10) { //if the list has 11 items delete the lowest one
+						topTenScores.pop();
+					}
 					
-					//$.each(highScores, function(i, score) {
-    	            //   $topTen.append("<div class='topTenItem'>" + score.name + "</div>" + "<div class='topTenItem'>" + score.score + "</div>");
-    				//});
+					for (var i = 0; i < topTenScores.length; i++) {
+						if (topTenScores[i].name === "addPlayerName") {
+							$topTen.append("<input type='text' id='userInput' class='topTenItem' placeholder='|'><div class='topTenItem userScore'>" + currentScoreGame + "</div>");
+							
+							//blinks the input marker
+							var f = document.getElementById('userInput');
+							setInterval(function() {
+								if (f.placeholder == "") {
+									f.placeholder = "|";
+								} else {
+									f.placeholder = "";
+								}
+							}, 850);
+							
+						} else {
+							$topTen.append("<div class='topTenItem'>" + topTenScores[i].name + "</div>" + "<div class='topTenItem'>" + topTenScores[i].score + "</div>");
+						}
+					}
 				}
 			}
 	
