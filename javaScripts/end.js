@@ -65,9 +65,7 @@ function finalButton() {
 				dataType: "json",
 				data: topTenScores,
 				type: "POST"
-			}).done(function (data) {
-				alert("scores saved");
-			});
+			})
 			
 			location.reload();
 		}
