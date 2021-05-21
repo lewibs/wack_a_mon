@@ -59,15 +59,23 @@ function finalButton() {
 				}
 			}
 			
-			
+			//posts the data to the file
 			$.ajax({
-				url: "data/highScores.json",
-				dataType: "json",
-				data: topTenScores,
-				type: "POST"
+				type: "POST",
+				url: "http://wackamon.lewibs.com/data/highScores.json",
+				data: topTenScores, //I dont think it is acctually using this data when it sends. no matter what I stick here it returns the same thing that is already in the file
+				dataType: "JSON",
+				success: function(msg){
+					console.log(msg); //returns the unupdated version of topTenScores
+					console.log(topTenScores);
+					console.log(this.url);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(XMLHttpRequest + "\n" + textStatus + "\n" + errorThrown);
+				}
 			});
 			
-			location.reload();
+			//location.reload();
 		}
 	} else {
 		location.reload();
@@ -130,7 +138,7 @@ function populateScores() {
 							//move the list down and go in the slot of i
 							//check the name and score
 							var back = topTenScores.splice(i);
-							back = [{"name": "addPlayerName", "score": currentScoreGame}].concat(back);
+							back = [{"name": "addPlayerName", "score": "" + currentScoreGame}].concat(back);
 							topTenScores = topTenScores.concat(back);
 							addedEl = true;
 							break;
@@ -138,7 +146,7 @@ function populateScores() {
 					}
 					
 					if (addedEl === false) {
-						topTenScores = topTenScores.concat({"name": "addPlayerName", "score": currentScoreGame});
+						topTenScores = topTenScores.concat({"name": "addPlayerName", "score": "" + currentScoreGame});
 					}
 					
 					if (topTenScores.length > 10) { //if the list has 11 items delete the lowest one
