@@ -1,13 +1,42 @@
-[{
+[
+	{
+		"name": "GBF",
+		"score": "128"
+	},
+	{
+		"name": "DFQ",
+		"score": "120"
+	},
+	{
+		"name": "KFC",
+		"score": "119"
+	},
+	{
+		"name": "HOU",
+		"score": "112"
+	},
+	{
+		"name": "CAR",
+		"score": "104"
+	},
+	{
+		"name": "JFS",
+		"score": "93"
+	},
+	{
+		"name": "HJA",
+		"score": "82"
+	},
+	{
 		"name": "BSL",
-		"score": "47"
+		"score": "79"
 	},
 	{
-		"name": "JSL",
-		"score": "42"
+		"name": "JOE",
+		"score": "78"
 	},
 	{
-	    "name": "DOG",
-	    "score": "36"
+		"name": "BMO",
+		"score": "73"
 	}
 ]

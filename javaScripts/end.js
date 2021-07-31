@@ -64,18 +64,10 @@ function finalButton() {
 				type: "POST",
 				url: "http://wackamon.lewibs.com/data/highScores.json",
 				data: topTenScores, //I dont think it is acctually using this data when it sends. no matter what I stick here it returns the same thing that is already in the file
-				dataType: "JSON",
-				success: function(msg){
-					console.log(msg); //returns the unupdated version of topTenScores
-					console.log(topTenScores);
-					console.log(this.url);
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert(XMLHttpRequest + "\n" + textStatus + "\n" + errorThrown);
-				}
+				dataType: "JSON"
 			});
 			
-			//location.reload();
+			location.reload();
 		}
 	} else {
 		location.reload();
